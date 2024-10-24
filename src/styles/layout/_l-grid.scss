@@ -1,0 +1,11 @@
+@use "../abstracts/" as *;
+
+.l-grid {
+  display: grid;
+  gap: $size-12 0;
+
+  @include mq(large) {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 0 $size-8;
+  }
+}

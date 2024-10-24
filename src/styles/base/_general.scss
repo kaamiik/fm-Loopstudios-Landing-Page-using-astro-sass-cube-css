@@ -1,18 +1,51 @@
 @use "../abstracts/" as *;
 
 body {
+  position: relative;
   font-family: $body-font-family;
   font-weight: $body-font-weight;
   font-size: $body-font-size;
   color: $body-text-color;
   background-color: $body-background-color;
   line-height: $body-line-height;
+
+  display: flex;
+  flex-direction: column;
+
+  background-image: url("/assets/images/mobile/image-hero.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 650px;
+  background-position: top center;
+
+  @include mq(medium) {
+    background-image: url("/assets/images/desktop/image-hero.jpg");
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 650px;
+    background-color: $color-neutral-1000;
+    opacity: 40%;
+    z-index: -1;
+  }
 }
 
-a {
-  color: $link-color;
+body:has(.nav__open[aria-expanded="true"]) {
+  overflow-y: hidden;
 }
 
-a:is(:hover, :focus) {
-  color: $link-color-hover;
+main {
+  padding-block: 7.6875rem 6rem;
+  flex: 1;
+  @include mq(medium) {
+    padding-block: 3.6875rem 11.5rem;
+  }
 }
+
+// a {
+//   color: $link-color;
+// }

@@ -11,3 +11,14 @@
 .flex-group.mx-auto {
   justify-content: center;
 }
+
+.footer-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $size-12;
+  @include mq(large) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
