@@ -23,26 +23,20 @@ if (href) El = "a";
     font-weight: $button-font-weight;
     padding: $button-padding;
     border: $button-border;
-    border-radius: $button-border-radius;
+    letter-spacing: $button-letter-spacing;
     transition: 275ms ease;
 
     &[data-type="primary"] {
       background-color: $button-primary-background;
       color: $button-primary-color;
-
+      outline: 3px solid transparent;
       &:is(:hover, :focus) {
         background-color: $button-primary-background-hover;
         color: $button-primary-color-hover;
       }
-    }
-
-    &[data-type="accent"] {
-      background-color: $button-accent-background;
-      color: $button-accent-color;
-
-      &:is(:hover, :focus) {
-        background-color: $button-accent-background-hover;
-        color: $button-accent-color-hover;
+      &:focus {
+        outline-color: rgb(111, 255, 0);
+        outline-offset: 5px;
       }
     }
   }

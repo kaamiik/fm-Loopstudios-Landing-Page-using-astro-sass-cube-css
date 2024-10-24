@@ -2,30 +2,180 @@
 
 ---
 
-<nav aria-label="primary navigation">
-  <ul class="nav | flex-group">
-    <li><a href="/index.html">Home</a></li>
-    <li><a href="#">Page 2</a></li>
-    <li><a href="#">Page 3</a></li>
-    <li><a href="#">Page 4</a></li>
-  </ul>
-</nav>
+<nav class="nav" aria-label="primary navigation">
+  <span id="nav-label" hidden></span>
+  <button
+    class="nav__open js-nav-open"
+    aria-expanded="false"
+    aria-labelledby="nav-label"
+    ><img
+      src="/public/assets/images/icon-hamburger.svg"
+      alt=""
+      width="28"
+    /></button
+  >
+  <div class="nav__menu" role="dialog" aria-labelledby="nav-label">
+    <div class="nav__hamburger--top">
+      <a class="nav__home" href="/index.html">
+        <img
+          class="site-header__logo"
+          aria-hidden="true"
+          src="/assets/images/logo.svg"
+          alt=""
+        />
+        <p class="visually-hidden">LOOPSTUDIOS HOME</p>
+      </a>
+      <button class="nav__close js-nav-close" aria-label="CLOSE"
+        ><img
+          src="/assets/images/icon-close.svg"
+          alt=""
+          width="28"
+          height="28"
+        /></button
+      >
+    </div>
 
+    <ul class="nav__list | flex-group">
+      <li class="nav__item"><a class="nav__link" href="#">About</a></li>
+      <li class="nav__item"><a class="nav__link" href="#">Careers</a></li>
+      <li class="nav__item"><a class="nav__link" href="#">Events</a></li>
+      <li class="nav__item"><a class="nav__link" href="#">Products</a></li>
+      <li class="nav__item"><a class="nav__link" href="#">Support</a></li>
+    </ul>
+  </div>
+</nav>
 <style lang="scss">
   @use "../styles/abstracts" as *;
   .nav {
-    --flex-column-gap: #{$navigation-gap};
+    &__open {
+      outline: 2px solid transparent;
+      @include mq(medium) {
+        display: none;
+      }
+      &:focus-within {
+        outline-color: rgb(72, 255, 0);
+        outline-offset: 5px;
+      }
 
-    list-style: none;
-    font-family: $navigation-font-family;
-    font-weight: $navigation-font-weight;
+      &[aria-expanded="true"] {
+        + .nav__menu {
+          translate: 0;
 
-    a {
+          @media (prefers-reduce-motion) {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    &__menu {
+      @media (width < 45em) {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        padding: $size-10 $size-6;
+        background-color: $color-neutral-1000;
+        translate: 100vw 0;
+        transition: translate 0.5s ease-in-out;
+      }
+
+      @media (width < 45em) and (prefers-reduce-motion) {
+        translate: 0;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+    }
+
+    &__hamburger--top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: $size-4;
+    }
+
+    &__home {
+      position: relative;
+      display: inline-block;
+      outline: 2px solid transparent;
+      @include mq(medium) {
+        display: none;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: $color-neutral-000;
+        transition: width 500ms ease;
+      }
+
+      &:hover:not(:focus)::after {
+        width: 80px;
+      }
+
+      &:focus-within {
+        outline-color: rgb(72, 255, 0);
+        outline-offset: 5px;
+      }
+    }
+
+    &__close {
+      outline: 2px solid transparent;
+      @include mq(medium) {
+        display: none;
+      }
+      &:focus-within {
+        outline-color: rgb(72, 255, 0);
+        outline-offset: 5px;
+      }
+    }
+
+    &__list {
+      --flex-column-gap: #{$navigation-gap};
+
+      list-style: none;
+      font-family: $navigation-font-family;
+      font-size: $navigation-font-size;
+      font-weight: $navigation-font-weight;
+
+      @media (width < 45em) {
+        flex-direction: column;
+        gap: $size-4;
+        font-family: $navigation-font-family-hamburger;
+        margin-block-start: 160px;
+      }
+    }
+
+    &__link {
+      position: relative;
+      display: inline-block;
       color: $navigation-color;
+      outline: 2px solid transparent;
       text-decoration: $navigation-link-text-decoration;
 
-      &:is(:hover, :focus) {
-        color: $navigation-color-hover;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: $color-neutral-000;
+        transition: width 270ms ease-in-out;
+      }
+
+      &:hover:not(:focus)::after {
+        width: 24px;
+      }
+
+      &:focus-within {
+        outline-color: rgb(72, 255, 0);
+        outline-offset: 5px;
       }
     }
   }
