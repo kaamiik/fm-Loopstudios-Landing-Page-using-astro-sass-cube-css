@@ -20,7 +20,7 @@ const products = [
     alt: "A person in a red soccer uniform with the number 9 running on a soccer field, with another player in a white uniform visible in the background.",
   },
   {
-    title: "The Grid",
+    title: `The Grid`,
     desktopSrc: "/assets/images/desktop/image-grid.jpg",
     mobileSrc: "/assets/images/mobile/image-grid.jpg",
     alt: "A close-up view of the rear section of a race car, focusing on the rear tire and part of the car's body.",
@@ -70,7 +70,13 @@ const products = [
           </picture>
 
           <a class="[ product__link ] [ heading-3 ]" href="#">
-            {product.title}
+            {product.title === "The Grid" ? (
+              <>
+                The <br /> Grid
+              </>
+            ) : (
+              product.title
+            )}
           </a>
         </li>
       ))
