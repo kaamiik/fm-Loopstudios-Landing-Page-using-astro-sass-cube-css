@@ -1,0 +1,198 @@
+---
+import Button from "./Button.astro";
+const products = [
+  {
+    title: "Deep Earth",
+    desktopSrc: "/assets/images/desktop/image-deep-earth.jpg",
+    mobileSrc: "/assets/images/mobile/image-deep-earth.jpg",
+    alt: "A view of Earth from space, highlighting the North American continent, including the western coast of the United States, parts of Mexico, and Canada. The Earth appears with a mix of land, water, and cloud formations against the blackness of space.",
+  },
+  {
+    title: "Night Arcade",
+    desktopSrc: "/assets/images/desktop/image-night-arcade.jpg",
+    mobileSrc: "/assets/images/mobile/image-night-arcade.jpg",
+    alt: "A skee-ball arcade game with various scoring rings labeled 1,000, 2,000, and 10,000 points, illuminated with colorful lights creating a vibrant atmosphere.",
+  },
+  {
+    title: "Soccer Team VR",
+    desktopSrc: "/assets/images/desktop/image-soccer-team.jpg",
+    mobileSrc: "/assets/images/mobile/image-soccer-team.jpg",
+    alt: "A person in a red soccer uniform with the number 9 running on a soccer field, with another player in a white uniform visible in the background.",
+  },
+  {
+    title: "The Grid",
+    desktopSrc: "/assets/images/desktop/image-grid.jpg",
+    mobileSrc: "/assets/images/mobile/image-grid.jpg",
+    alt: "A close-up view of the rear section of a race car, focusing on the rear tire and part of the car's body.",
+  },
+  {
+    title: "From Up Above VR",
+    desktopSrc: "/assets/images/desktop/image-from-above.jpg",
+    mobileSrc: "/assets/images/mobile/image-from-above.jpg",
+    alt: "An aerial view of a winding road with multiple sharp curves and switchbacks, surrounded by autumn-colored trees.",
+  },
+  {
+    title: "Pocket Borealis",
+    desktopSrc: "/assets/images/desktop/image-pocket-borealis.jpg",
+    mobileSrc: "/assets/images/mobile/image-pocket-borealis.jpg",
+    alt: "A stunning display of the Northern Lights, with vibrant green and purple hues illuminating the sky.",
+  },
+  {
+    title: "The Curiosity",
+    desktopSrc: "/assets/images/desktop/image-curiosity.jpg",
+    mobileSrc: "/assets/images/mobile/image-curiosity.jpg",
+    alt: "A Mars rover on a rocky Martian surface, with hills and rocks in the background.",
+  },
+  {
+    title: "Make It Fisheye",
+    desktopSrc: "/assets/images/desktop/image-fisheye.jpg",
+    mobileSrc: "/assets/images/mobile/image-fisheye.jpg",
+    alt: "A fisheye lens photograph capturing a circular, distorted view of a landscape.",
+  },
+];
+---
+
+<section class="product" aria-labelledby="products-title">
+  <h2 class="[ product__heading ] [ heading-2 ]" id="products-title">
+    Our Creations
+  </h2>
+  <ul class="product__list">
+    {
+      products.map((product) => (
+        <li class="product__item">
+          <picture class="product__picture">
+            <source srcset={product.desktopSrc} media="(min-width: 45em)" />
+            <img
+              class="product__image"
+              src={product.mobileSrc}
+              alt={product.alt}
+            />
+          </picture>
+
+          <a class="[ product__link ] [ heading-3 ]" href="#">
+            {product.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <div class="product__btn">
+    <Button href="#" theme="primary">See All</Button>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../styles/abstracts/" as *;
+
+  .product {
+    margin-block-start: 6rem;
+    display: grid;
+    @include mq(medium) {
+      margin-block-start: 11.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto 5rem auto;
+      grid-template-areas:
+        "heading heading button"
+        ". . ."
+        "list list list";
+    }
+
+    @include mq(large) {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto 5rem auto;
+      grid-template-areas:
+        "heading heading button button"
+        ". . . ."
+        "list list list list";
+    }
+
+    &__heading {
+      text-align: center;
+
+      @include mq(medium) {
+        grid-area: heading;
+        text-align: revert;
+      }
+    }
+
+    &__list {
+      margin-block-start: $size-12;
+      display: grid;
+      gap: $size-6;
+
+      @include mq(medium) {
+        margin: 0;
+        grid-template-columns: repeat(3, 1fr);
+        grid-area: list;
+      }
+      @include mq(large) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    &__item {
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color-neutral-000;
+        opacity: 0;
+        transition: opacity 270ms ease-in-out;
+      }
+
+      &:has(.product__link:focus-within) {
+        box-shadow: 0 0 0 3px hsla(111, 99%, 49%, 0.8);
+      }
+
+      &:hover:not(:focus-within):after {
+        opacity: 0.75;
+      }
+
+      &:hover:not(:focus-within) .product__link {
+        color: $color-neutral-1000;
+        background-color: transparent;
+        z-index: 100;
+      }
+    }
+
+    &__image {
+      width: 100%;
+    }
+
+    &__link {
+      position: absolute;
+      bottom: 10px;
+      right: 0;
+      max-width: 10ch;
+      font-weight: bold;
+      background-color: $color-neutral-1000;
+      color: $color-neutral-000;
+      outline: 2px solid transparent;
+      opacity: 0.8;
+      padding: $size-2;
+      transition:
+        color 270ms ease-in-out,
+        background-color 270ms ease-in-out;
+
+      @include mq(medium) {
+        bottom: 20px;
+        opacity: 1;
+      }
+    }
+
+    &__btn {
+      margin-block-start: $size-9;
+      margin-inline: auto;
+      width: fit-content;
+      @include mq(medium) {
+        margin: 0;
+        grid-area: button;
+        justify-self: end;
+      }
+    }
+  }
+</style>

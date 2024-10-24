@@ -2,10 +2,10 @@
 
 ---
 
-<nav class="nav" aria-label="primary navigation">
-  <span id="nav-label" hidden></span>
+<nav class="nav">
+  <span id="nav-label" hidden>Navigation</span>
   <button
-    class="nav__open js-nav-open"
+    class="[ nav__open ] [ js-nav-open ]"
     aria-expanded="false"
     aria-labelledby="nav-label"
     ><img src="/assets/images/icon-hamburger.svg" alt="" width="28" /></button
@@ -21,7 +21,7 @@
         />
         <p class="visually-hidden">LOOPSTUDIOS HOME</p>
       </a>
-      <button class="nav__close js-nav-close" aria-label="CLOSE"
+      <button class="[ nav__close ] [ js-nav-close ]" aria-label="CLOSE"
         ><img
           src="/assets/images/icon-close.svg"
           alt=""
@@ -31,7 +31,7 @@
       >
     </div>
 
-    <ul class="nav__list | flex-group">
+    <ul class="[ nav__list ] [ flex-group ]">
       <li class="nav__item"><a class="nav__link" href="#">About</a></li>
       <li class="nav__item"><a class="nav__link" href="#">Careers</a></li>
       <li class="nav__item"><a class="nav__link" href="#">Events</a></li>
@@ -48,7 +48,7 @@
       @include mq(medium) {
         display: none;
       }
-      &:focus-within {
+      &:focus {
         outline-color: rgb(72, 255, 0);
         outline-offset: 5px;
       }
@@ -113,7 +113,7 @@
         width: 80px;
       }
 
-      &:focus-within {
+      &:focus {
         outline-color: rgb(72, 255, 0);
         outline-offset: 5px;
       }
@@ -124,7 +124,7 @@
       @include mq(medium) {
         display: none;
       }
-      &:focus-within {
+      &:focus {
         outline-color: rgb(72, 255, 0);
         outline-offset: 5px;
       }
@@ -169,7 +169,7 @@
         width: 24px;
       }
 
-      &:focus-within {
+      &:focus {
         outline-color: rgb(72, 255, 0);
         outline-offset: 5px;
       }

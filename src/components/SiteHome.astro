@@ -1,0 +1,57 @@
+---
+
+---
+
+<a class="site-home__link" href="/index.html">
+  <img
+    class="site-home__logo"
+    aria-hidden="true"
+    src="/assets/images/logo.svg"
+    alt=""
+  />
+  <p class="visually-hidden">LOOPSTUDIOS HOME</p>
+</a>
+
+<style lang="scss">
+  @use "../styles/abstracts/" as *;
+
+  .site-home {
+    &__link {
+      position: relative;
+      display: inline-block;
+      outline: 2px solid transparent;
+      width: fit-content;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: $color-neutral-000;
+        transition: width 500ms ease;
+      }
+
+      &:hover:not(:focus)::after {
+        width: 80px;
+      }
+
+      &:focus {
+        outline-color: rgb(72, 255, 0);
+        outline-offset: 5px;
+      }
+    }
+
+    &__logo {
+      width: 144px;
+      height: 24px;
+
+      @include mq(medium) {
+        width: 192px;
+        height: 32px;
+      }
+    }
+  }
+</style>

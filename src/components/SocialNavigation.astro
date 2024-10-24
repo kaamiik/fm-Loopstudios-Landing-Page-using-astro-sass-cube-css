@@ -1,0 +1,73 @@
+---
+
+---
+
+<nav class="social" aria-label="social navigation">
+  <ul class="social__list">
+    <li class="social__item">
+      <a class="social__link" href="#">
+        <span class="visually-hidden">FACEBOOK</span>
+        <img src="/assets/images/icon-facebook.svg" alt="" /></a
+      >
+    </li>
+    <li class="social__item">
+      <a class="social__link" href="#">
+        <span class="visually-hidden">TWITTER</span>
+        <img src="/assets/images/icon-twitter.svg" alt="" /></a
+      >
+    </li>
+    <li class="social__item">
+      <a class="social__link" href="#">
+        <span class="visually-hidden">PINTEREST</span>
+        <img src="/assets/images/icon-pinterest.svg" alt="" /></a
+      >
+    </li>
+    <li class="social__item">
+      <a class="social__link" href="#">
+        <span class="visually-hidden">INSTAGRAM</span>
+        <img src="/assets/images/icon-instagram.svg" alt="" /></a
+      >
+    </li>
+  </ul>
+</nav>
+
+<style lang="scss">
+  @use "../styles/abstracts/" as *;
+
+  .social {
+    &__list {
+      display: flex;
+      align-items: center;
+      gap: $size-4;
+    }
+
+    &__link {
+      position: relative;
+      display: inline-block;
+      color: $navigation-color;
+      outline: 2px solid transparent;
+      text-decoration: $navigation-link-text-decoration;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: $color-neutral-000;
+        transition: width 270ms ease-in-out;
+      }
+
+      &:hover:not(:focus)::after {
+        width: 24px;
+      }
+
+      &:focus {
+        outline-color: rgb(72, 255, 0);
+        outline-offset: 5px;
+      }
+    }
+  }
+</style>

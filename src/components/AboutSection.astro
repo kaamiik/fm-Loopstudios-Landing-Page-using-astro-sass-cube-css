@@ -1,0 +1,73 @@
+---
+
+---
+
+<section class="[ about ] [ l-grid ]" aria-labelledby="about-tile">
+  <img
+    class="about__image"
+    src="/assets/images/mobile/image-interactive.jpg"
+    alt="A person wearing a virtual reality headset and a blue T-shirt, standing against a purple background. The person has both hands raised and slightly curved, as if interacting with a virtual environment."
+  />
+  <div class="about__description">
+    <h2 class="heading-2" id="about-title">The leader in interactive VR</h2>
+    <p class="about__info">
+      Founded in 2011, Loopstudios has been producing world-class virtual
+      reality projects for some of the best companies around the globe. Our
+      award-winning creations have transformed businesses through digital
+      experiences that bind to their brand.
+    </p>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../styles/abstracts/" as *;
+
+  .about {
+    margin-block-start: 20.1875rem;
+    @include mq(medium) {
+      margin-block-start: 19.125rem;
+    }
+
+    &__image,
+    &__description {
+      margin-inline: auto;
+      @include mq(large) {
+        grid-row: 1;
+        margin-inline: revert;
+      }
+    }
+
+    &__image {
+      @include mq(large) {
+        grid-column: 1 / 9;
+        height: 500px;
+        object-fit: cover;
+      }
+    }
+
+    &__description {
+      background-color: $color-neutral-000;
+      display: flex;
+      flex-direction: column;
+      gap: $size-4;
+      text-align: center;
+      max-width: 28rem;
+      @include mq(medium) {
+        max-width: 34rem;
+      }
+      @include mq(large) {
+        gap: $size-6;
+        padding-block-start: $size-22;
+        padding-inline-start: $size-22;
+        text-align: revert;
+        grid-column: 7 / -1;
+        align-self: end;
+        z-index: 2;
+      }
+    }
+
+    &__info {
+      opacity: 0.5;
+    }
+  }
+</style>

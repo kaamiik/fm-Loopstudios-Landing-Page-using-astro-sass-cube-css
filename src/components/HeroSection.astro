@@ -1,0 +1,31 @@
+---
+
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <h1 class="[ hero__heading ] [ heading-1 ]" id="hero-title">
+    Immersive experiences that deliver
+  </h1>
+</section>
+
+<style lang="scss">
+  @use "../styles/abstracts/" as *;
+
+  .hero {
+    &__heading {
+      border: 2px solid $color-neutral-000;
+      padding: $size-6;
+      max-width: 23.5rem;
+      @include mq(medium) {
+        padding: $size-10;
+        max-width: 41rem;
+      }
+
+      // Just for very small sizes
+      @media (max-width: 22.5rem) {
+        font-size: 2rem;
+        padding: $size-3;
+      }
+    }
+  }
+</style>
