@@ -3,6 +3,7 @@ const btnOpen = document.querySelector(".js-nav-open");
 const btnClose = document.querySelector(".js-nav-close");
 const media = window.matchMedia("(width < 45em)");
 const topNavMenu = document.querySelector(".nav__menu");
+const body = document.querySelector("body");
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
 
@@ -27,6 +28,7 @@ function openMobileMenu() {
   topNavMenu.removeAttribute("style");
   main.setAttribute("inert", "");
   footer.setAttribute("inert", "");
+  bodyScrollLockUpgrade.disableBodyScroll(body);
   btnClose.focus();
 }
 
@@ -35,6 +37,7 @@ function closeMobileMenu() {
   topNavMenu.setAttribute("inert", "");
   main.removeAttribute("inert");
   footer.removeAttribute("inert");
+  bodyScrollLockUpgrade.enableBodyScroll(body);
   btnOpen.focus();
 
   setTimeout(() => {

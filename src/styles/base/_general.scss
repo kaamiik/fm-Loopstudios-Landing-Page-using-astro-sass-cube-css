@@ -34,10 +34,6 @@ body {
   }
 }
 
-body:has(.nav__open[aria-expanded="true"]) {
-  overflow-y: hidden;
-}
-
 main {
   padding-block: 7.6875rem 6rem;
   flex: 1;
